@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Project::Base => '/'
+  # mount Project::Base => '/'
 end
