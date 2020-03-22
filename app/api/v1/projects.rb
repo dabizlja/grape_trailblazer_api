@@ -5,31 +5,28 @@ module V1
     resources :projects do 
       desc "List all projects"
       get do
-        Project.all
+        Project::Index.()["model"]
       end
 
       desc "Return specific project"
       get ":id" do 
-        project = Project.find(params[:id])
-        present project
+        Project::Show.(params: params)["model"]
       end
 
       desc "Create project"
       post do
-        Project.create!(name: params[:name], tags: params[:tags], type: params[:type].to_i) 
+        result = Project::Create.(params: params)
+        result.success? ? result["model"] : result["result.contract.default"].errors.messages
       end
 
       desc "Update project"
-      put ":id" do 
-        project = Project.find(params[:id])
-        project.update(params)
-        present project
+      put ":id" do
+        Project::Update.(params: params)["model"]
       end
 
       desc "Delete project"
       delete ":id" do 
-        project = Project.find(params[:id])
-        project.destroy
+        Project::Delete.(params: params)["model"]
       end
     end
   end

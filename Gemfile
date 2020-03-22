@@ -36,6 +36,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'grape'
 gem 'grape_on_rails_routes'
 
+gem 'reform-rails', '~> 0.1.7'
+gem 'trailblazer', '~> 2.1'
+gem "trailblazer-rails"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
